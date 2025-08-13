@@ -1,0 +1,21 @@
+User-agent: *
+Allow: /
+
+# Allow social media crawlers to access Open Graph images
+User-agent: Twitterbot
+Allow: /order/*/opengraph-image
+
+User-agent: facebookexternalhit
+Allow: /order/*/opengraph-image
+
+User-agent: LinkedInBot
+Allow: /order/*/opengraph-image
+
+User-agent: WhatsApp
+Allow: /order/*/opengraph-image
+
+User-agent: TelegramBot
+Allow: /order/*/opengraph-image
+
+# Sitemap
+Sitemap: https://garden-og.vercel.app/sitemap.xml

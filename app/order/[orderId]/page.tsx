@@ -1,38 +1,70 @@
-import type { Metadata } from 'next'
-import { headers } from 'next/headers'
+import { Metadata } from 'next'
 import { fetchOrder } from '@/lib/api'
+import { compactHash, formatAmountRaw } from '@/lib/formatting'
 import OrderCard from '@/components/OrderCard'
 
-export const dynamic = 'force-dynamic'
+export const runtime = 'edge'
 
-async function getBaseUrlFromHeaders() {
-    const h = await headers()
-    const proto = h.get('x-forwarded-proto') ?? 'https'
-    const host =
-        h.get('x-forwarded-host') ??
-        h.get('host') ??
-        'localhost:3000'
-    return `${proto}://${host}`
-}
+export async function generateMetadata({ params }: { params: Promise<{ orderId: string }> }): Promise<Metadata> {
+    try {
+        const { orderId } = await params
+        const result = await fetchOrder(orderId)
 
-export async function generateMetadata(
-    { params }: { params: Promise<{ orderId: string }> }
-): Promise<Metadata> {
-    const { orderId } = await params
-    const base = await getBaseUrlFromHeaders()
-    const ogUrl = new URL(`/order/${orderId}/opengraph-image`, base).toString()
+        const srcChain = result.create_order.source_chain
+        const dstChain = result.create_order.destination_chain
+        const srcAsset = compactHash(result.create_order.source_asset)
+        const dstAsset = compactHash(result.create_order.destination_asset)
+        const srcAmt = formatAmountRaw(result.create_order.source_amount)
+        const dstAmt = formatAmountRaw(result.create_order.destination_amount)
 
-    return {
-        title: `Order ${orderId}`,
-        description: 'Garden order preview',
-        openGraph: {
-            type: 'website',
-            images: [{ url: ogUrl, width: 1200, height: 630 }],
-        },
-        twitter: {
-            card: 'summary_large_image',
-            images: [ogUrl],
-        },
+        return {
+            title: `Garden Order ${orderId.slice(0, 8)}...`,
+            description: `Cross-chain transfer: ${srcAmt} ${srcAsset} on ${srcChain} → ${dstAmt} ${dstAsset} on ${dstChain}`,
+            openGraph: {
+                title: `Garden Order ${orderId.slice(0, 8)}...`,
+                description: `Cross-chain transfer: ${srcAmt} ${srcAsset} on ${srcChain} → ${dstAmt} ${dstAsset} on ${dstChain}`,
+                type: 'website',
+                images: [
+                    {
+                        url: `/order/${orderId}/opengraph-image`,
+                        width: 1200,
+                        height: 630,
+                        alt: 'Garden Order Preview',
+                    },
+                ],
+            },
+            twitter: {
+                card: 'summary_large_image',
+                title: `Garden Order ${orderId.slice(0, 8)}...`,
+                description: `Cross-chain transfer: ${srcAmt} ${srcAsset} on ${srcChain} → ${dstAmt} ${dstAsset} on ${dstChain}`,
+                images: [`/order/${orderId}/opengraph-image`],
+            },
+        }
+    } catch (error) {
+        const { orderId } = await params
+        return {
+            title: `Garden Order ${orderId.slice(0, 8)}...`,
+            description: 'Garden cross-chain order details',
+            openGraph: {
+                title: `Garden Order ${orderId.slice(0, 8)}...`,
+                description: 'Garden cross-chain order details',
+                type: 'website',
+                images: [
+                    {
+                        url: `/order/${orderId}/opengraph-image`,
+                        width: 1200,
+                        height: 630,
+                        alt: 'Garden Order Preview',
+                    },
+                ],
+            },
+            twitter: {
+                card: 'summary_large_image',
+                title: `Garden Order ${orderId.slice(0, 8)}...`,
+                description: 'Garden cross-chain order details',
+                images: [`/order/${orderId}/opengraph-image`],
+            },
+        }
     }
 }
 
