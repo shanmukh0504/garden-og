@@ -1,13 +1,8 @@
 import { ImageResponse } from 'next/og'
-import { fetchOrder } from '@/lib/api'
-import { compactHash, formatAmountRaw } from '@/lib/formatting'
+import { fetchOrder } from '@/utils/api'
+import { compactHash, formatAmountRaw } from '@/utils/formatting'
 
-export const runtime = 'edge'
-export const alt = 'Garden Order'
 export const size = { width: 1200, height: 630 }
-export const contentType = 'image/png'
-
-export const revalidate = 3600
 
 export const staticFallback = new ImageResponse(
     (

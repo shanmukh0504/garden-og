@@ -16,6 +16,3 @@ Allow: /order/*/opengraph-image
 
 User-agent: TelegramBot
 Allow: /order/*/opengraph-image
-
-# Sitemap
-Sitemap: https://garden-og.vercel.app/sitemap.xml

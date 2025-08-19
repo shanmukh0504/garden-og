@@ -1,9 +1,7 @@
 import { Metadata } from 'next'
-import { fetchOrder } from '@/lib/api'
-import { compactHash, formatAmountRaw } from '@/lib/formatting'
+import { fetchOrder } from '@/utils/api'
+import { compactHash, formatAmountRaw } from '@/utils/formatting'
 import OrderCard from '@/components/OrderCard'
-
-export const runtime = 'edge'
 
 export async function generateMetadata({ params }: { params: Promise<{ orderId: string }> }): Promise<Metadata> {
     try {

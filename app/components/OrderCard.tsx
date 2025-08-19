@@ -1,4 +1,4 @@
-import { formatAmountRaw, compactHash } from '@/lib/formatting'
+import { formatAmountRaw, compactHash } from '@/utils/formatting'
 
 export default function OrderCard({
   source_chain, destination_chain,

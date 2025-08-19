@@ -3,13 +3,13 @@ export function compactHash(addr?: string) {
     return `${addr.slice(0, 6)}…${addr.slice(-4)}`
   }
   
-  export function formatAmountRaw(s?: string) {
-    if (!s) return ''
+  export function formatAmountRaw(amount?: string) {
+    if (!amount) return ''
     try {
-      const withCommas = s.replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+      const withCommas = amount.replace(/\B(?=(\d{3})+(?!\d))/g, ',')
       return withCommas
     } catch {
-      return s
+      return amount
     }
   }
   

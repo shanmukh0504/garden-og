@@ -1,6 +1,7 @@
 'use client'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
+import { DOMAIN } from '@/utils/config'
 
 export default function Home() {
   const [orderId, setOrderId] = useState('')
@@ -32,7 +33,7 @@ export default function Home() {
         </form>
 
         <div className="text-sm text-neutral-500">
-          Tip: Share <code>https://your-domain.com/order/&lt;orderId&gt;</code> on X.com — the preview image is generated from live data.
+          Tip: Share <code>{DOMAIN}/order/&lt;orderId&gt;</code> on X.com — the preview image is generated from live data.
         </div>
       </div>
     </main>
