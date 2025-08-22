@@ -8,7 +8,31 @@ export default async function OpengraphImage({ searchParams }: { searchParams: {
     try {
         const { orderId } = searchParams
 
-        if (!orderId || orderId.length < 10) {
+        // Handle build-time scenario where no orderId is provided
+        if (!orderId) {
+            return new ImageResponse(
+                (
+                    <div className="w-full h-full bg-[#0a0a0a] flex items-center justify-center p-12 font-sans">
+                        <div className="bg-[#111315] border border-[#1e2329] rounded-2xl p-12 flex flex-col items-center justify-center min-w-[600px] max-w-[800px] text-center">
+                            <div className="mb-8">
+                                <div className="text-2xl text-[#9ca3af] mb-4">
+                                    Cost Saved
+                                </div>
+                                <div className="text-xl text-[#e5e7eb] mb-6">
+                                    Enter orderId to see savings
+                                </div>
+                                <div className="text-[72px] font-black text-[#34d399] leading-none">
+                                    $0.00
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                ),
+                { ...size }
+            )
+        }
+
+        if (orderId.length < 10) {
             throw new Error('Invalid order ID')
         }
 
