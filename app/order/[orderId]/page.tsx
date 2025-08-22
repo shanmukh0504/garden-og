@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: { params: Promise<{ orderId: 
                 type: 'website',
                 images: [
                     {
-                        url: `/order/${orderId}/opengraph-image`,
+                        url: `opengraph-image`,
                         width: 1200,
                         height: 630,
                         alt: 'Garden Order Preview',
@@ -35,7 +35,7 @@ export async function generateMetadata({ params }: { params: Promise<{ orderId: 
                 card: 'summary_large_image',
                 title: `Garden Order ${orderId.slice(0, 8)}...`,
                 description: `Cross-chain transfer: ${srcAmt} ${srcAsset} on ${srcChain} → ${dstAmt} ${dstAsset} on ${dstChain}`,
-                images: [`/order/${orderId}/opengraph-image`],
+                images: [`opengraph-image`],
             },
         }
     } catch (error) {
@@ -49,7 +49,7 @@ export async function generateMetadata({ params }: { params: Promise<{ orderId: 
                 type: 'website',
                 images: [
                     {
-                        url: `/order/${orderId}/opengraph-image`,
+                        url: `opengraph-image`,
                         width: 1200,
                         height: 630,
                         alt: 'Garden Order Preview',
@@ -60,7 +60,7 @@ export async function generateMetadata({ params }: { params: Promise<{ orderId: 
                 card: 'summary_large_image',
                 title: `Garden Order ${orderId.slice(0, 8)}...`,
                 description: 'Garden cross-chain order details',
-                images: [`/order/${orderId}/opengraph-image`],
+                images: [`opengraph-image`],
             },
         }
     }

@@ -1,12 +1,12 @@
 import { ImageResponse } from 'next/og'
 import { fetchOrder } from '@/utils/api'
-import { compactHash } from '@/utils/formatting'
+import { compactHash, formatAmountRaw } from '@/utils/formatting'
 
 export const size = { width: 1200, height: 630 }
 
-export default async function OpengraphImage({ params }: { params: Promise<{ orderId: string }> }) {
+export default async function OpengraphImage({ searchParams }: { searchParams: Promise<{ orderId?: string }> }) {
     try {
-        const { orderId } = await params
+        const { orderId } = await searchParams
 
         if (!orderId || orderId.length < 10) {
             throw new Error('Invalid order ID')
@@ -20,20 +20,22 @@ export default async function OpengraphImage({ params }: { params: Promise<{ ord
 
         const srcAsset = compactHash(result.create_order.source_asset) || 'Unknown'
         const dstAsset = compactHash(result.create_order.destination_asset) || 'Unknown'
+        const timeSaved = '01m 23s' // You can calculate this from order data if available
 
         return new ImageResponse(
             (
                 <div className="w-full h-full bg-[#0a0a0a] flex flex-col items-center justify-center p-12 font-sans">
+                    {/* SavingsShareCard styled for OpenGraph */}
                     <div className="bg-[#111315] border border-[#1e2329] rounded-2xl p-12 flex flex-col items-center justify-center min-w-[600px] max-w-[800px] text-center">
                         <div className="mb-8">
                             <div className="text-2xl text-[#9ca3af] mb-4">
-                                Garden Order
+                                Time Saved
                             </div>
                             <div className="text-xl text-[#e5e7eb] mb-6">
                                 {srcAsset} → {dstAsset}
                             </div>
-                            <div className="text-5xl font-bold text-[#34d399] leading-none">
-                                Cross-Chain Transfer
+                            <div className="text-[72px] font-black text-[#34d399] leading-none">
+                                {timeSaved}
                             </div>
                         </div>
 
