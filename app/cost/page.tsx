@@ -8,6 +8,9 @@ export default function CostPage() {
                 inputAssetSymbol="BTC"
                 outputAssetSymbol="USDC"
                 feesSaved="$20.01"
+                flowersSrc="/flowers.png"
+                pinkStrokesSrc="/PinkStrokes.png"
+                flowersLogoSrc="/flowersLogo.png"
             />
         </div>
     )

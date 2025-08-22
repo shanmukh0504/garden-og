@@ -8,6 +8,9 @@ export default function TimePage() {
                 inputAssetSymbol="BTC"
                 outputAssetSymbol="USDC"
                 timeSaved="01m 23s"
+                flowersSrc="/flowers.png"
+                pinkStrokesSrc="/PinkStrokes.png"
+                flowersLogoSrc="/flowersLogo.png"
             />
         </div>
     )
