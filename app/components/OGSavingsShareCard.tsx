@@ -26,7 +26,6 @@ export const OGSavingsShareCard: React.FC<Props> = ({
             padding: 48,
             fontFamily: 'Inter, ui-sans-serif, system-ui',
         }}>
-            {/* Main Card */}
             <div style={{
                 background: '#111315',
                 border: '1px solid #1e2329',
@@ -42,7 +41,6 @@ export const OGSavingsShareCard: React.FC<Props> = ({
                 position: 'relative',
             }}>
 
-                {/* Top Flowers */}
                 <div style={{
                     position: 'absolute',
                     top: 20,
@@ -56,13 +54,12 @@ export const OGSavingsShareCard: React.FC<Props> = ({
                     justifyContent: 'center',
                 }}>
                     <img
-                        src="/flowers.png"
+                        src="https://garden-og.vercel.app/flowers.png"
                         alt="flowers"
                         style={{ width: '100%', height: '100%', objectFit: 'contain' }}
                     />
                 </div>
 
-                {/* Main Content */}
                 <div style={{
                     display: 'flex',
                     flexDirection: 'column',
@@ -71,7 +68,6 @@ export const OGSavingsShareCard: React.FC<Props> = ({
                     marginBottom: 32,
                     marginTop: 40,
                 }}>
-                    {/* Title */}
                     <div style={{
                         fontSize: 28,
                         color: '#9ca3af',
@@ -81,7 +77,6 @@ export const OGSavingsShareCard: React.FC<Props> = ({
                         {time ? 'Time Saved' : 'Cost Saved'}
                     </div>
 
-                    {/* Asset Pair */}
                     <div style={{
                         fontSize: 22,
                         color: '#e5e7eb',
@@ -95,7 +90,6 @@ export const OGSavingsShareCard: React.FC<Props> = ({
                         <span>{outputAssetSymbol}</span>
                     </div>
 
-                    {/* Main Value */}
                     <div style={{
                         fontSize: 72,
                         fontWeight: 900,
@@ -107,7 +101,6 @@ export const OGSavingsShareCard: React.FC<Props> = ({
                     </div>
                 </div>
 
-                {/* Bottom Flowers */}
                 <div style={{
                     position: 'absolute',
                     bottom: 20,
@@ -121,13 +114,12 @@ export const OGSavingsShareCard: React.FC<Props> = ({
                     justifyContent: 'center',
                 }}>
                     <img
-                        src="/flowersLogo.png"
+                        src="https://garden-og.vercel.app/flowersLogo.png"
                         alt="flowers logo"
                         style={{ width: '100%', height: '100%', objectFit: 'contain' }}
                     />
                 </div>
 
-                {/* Pink Strokes Decoration */}
                 <div style={{
                     position: 'absolute',
                     bottom: 40,
@@ -139,7 +131,7 @@ export const OGSavingsShareCard: React.FC<Props> = ({
                     justifyContent: 'center',
                 }}>
                     <img
-                        src="/PinkStrokes.png"
+                        src="https://garden-og.vercel.app/PinkStrokes.png"
                         alt="pink strokes"
                         style={{ width: '100%', height: '100%', objectFit: 'contain' }}
                     />
