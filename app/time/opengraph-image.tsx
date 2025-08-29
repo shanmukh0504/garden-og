@@ -1,6 +1,6 @@
 import { ImageResponse } from 'next/og'
 import { fetchOrder } from '@/utils/api'
-import { compactHash, formatAmountRaw } from '@/utils/formatting'
+import { compactHash } from '@/utils/formatting'
 import { OGSavingsShareCard } from '@/components/OGSavingsShareCard'
 
 export const size = { width: 1200, height: 630 }

@@ -38,7 +38,7 @@ export async function generateMetadata({ params }: { params: Promise<{ orderId: 
                 images: [`/order/${orderId}/opengraph-image`],
             },
         }
-    } catch (error) {
+    } catch {
         const { orderId } = await params
         return {
             title: `Garden Order ${orderId.slice(0, 8)}...`,

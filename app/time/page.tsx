@@ -7,9 +7,9 @@ export const dynamic = 'force-dynamic'
 export default async function TimePage({
     searchParams,
 }: {
-    searchParams: { orderId?: string }
+    searchParams: Promise<{ orderId?: string }>
 }) {
-    const { orderId } = searchParams
+    const { orderId } = await searchParams
 
     if (!orderId) {
         return (
@@ -44,7 +44,7 @@ export default async function TimePage({
                 />
             </div>
         )
-    } catch (error) {
+    } catch {
         return (
             <div className="min-h-screen bg-primary flex items-center justify-center p-4">
                 <div className="text-center">
