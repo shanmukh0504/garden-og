@@ -4,7 +4,7 @@ export const dynamic = 'force-dynamic'
 
 export default function TimePage() {
     return (
-        <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4">
+        <div className="min-h-screen bg-primary flex items-center justify-center p-4">
             <SavingsShareCard
                 time={true}
                 inputAssetSymbol="BTC"

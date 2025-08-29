@@ -1,142 +1,142 @@
+'use client'
 import React from 'react';
+import { ArrowRightIcon, Typography } from '@gardenfi/garden-book';
 
 type Props = {
-    time: boolean;
-    inputAssetSymbol: string;
-    outputAssetSymbol: string;
-    feesSaved?: string;
-    timeSaved?: string;
+  time: boolean;
+  inputAssetSymbol: string;
+  outputAssetSymbol: string;
+  feesSaved?: string;
+  timeSaved?: string;
+  flowersSrc?: string;
+  pinkStrokesSrc?: string;
+  flowersLogoSrc?: string;
 };
 
 export const OGSavingsShareCard: React.FC<Props> = ({
-    time = true,
-    inputAssetSymbol = 'BTC',
-    outputAssetSymbol = 'USDC',
-    feesSaved = '$20.01',
-    timeSaved = '01m 23s',
+  time = true,
+  inputAssetSymbol = 'BTC',
+  outputAssetSymbol = 'USDC',
+  feesSaved = '$20.01',
+  timeSaved = '01m 23s',
+  flowersSrc = '/flowers.png',
+  pinkStrokesSrc = '/PinkStrokes.png',
+  flowersLogoSrc = '/flowersLogo.png',
 }) => {
-    return (
-        <div style={{
-            width: '100%',
-            height: '100%',
-            background: '#0a0a0a',
+  return (
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 16,
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}
+    >
+      <div
+        style={{
+          position: 'relative',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'space-between',
+          borderRadius: 16,
+          padding: 16,
+          minWidth: 424,
+          width: '100%',
+          background: '#ffffff',
+        }}
+      >
+        <div
+          style={{
+            position: 'relative',
             display: 'flex',
+            flexDirection: 'column',
             alignItems: 'center',
+            width: '100%',
             justifyContent: 'center',
-            padding: 48,
-            fontFamily: 'Inter, ui-sans-serif, system-ui',
-        }}>
-            <div style={{
-                background: '#111315',
-                border: '1px solid #1e2329',
-                borderRadius: 16,
-                padding: 48,
+          }}
+        >
+          {/* Top flowers image */}
+          <div style={{ display: 'flex', width: '100%', justifyContent: 'flex-start' }}>
+            <img src={flowersSrc} alt="flowers" style={{ width: 'auto', height: 32 }} />
+          </div>
+
+          {/* Content block */}
+          <div
+            style={{
+              position: 'relative',
+              marginBottom: 36,
+              marginTop: 28,
+              display: 'flex',
+              flexDirection: 'column',
+              gap: 8,
+              alignItems: 'center',
+            }}
+          >
+            {/* Pink strokes behind */}
+            <img
+              src={pinkStrokesSrc}
+              alt="pink strokes"
+              style={{
+                position: 'absolute',
+                bottom: -32,
+                right: -24,
+                zIndex: 0,
+                width: 120,
+                opacity: 0.8,
+              }}
+            />
+
+            {/* Header */}
+            <div
+              style={{
                 display: 'flex',
-                flexDirection: 'column',
                 alignItems: 'center',
-                justifyContent: 'center',
-                minWidth: 600,
-                maxWidth: 800,
-                textAlign: 'center',
-                position: 'relative',
-            }}>
-
-                <div style={{
-                    position: 'absolute',
-                    top: 20,
-                    left: 20,
-                    width: 60,
-                    height: 60,
-                    background: '#34d399',
-                    borderRadius: 8,
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                }}>
-                    <img
-                        src="https://garden-og.vercel.app/flowers.png"
-                        alt="flowers"
-                        style={{ width: '100%', height: '100%', objectFit: 'contain' }}
-                    />
-                </div>
-
-                <div style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    marginBottom: 32,
-                    marginTop: 40,
-                }}>
-                    <div style={{
-                        fontSize: 28,
-                        color: '#9ca3af',
-                        marginBottom: 16,
-                        fontWeight: 500,
-                    }}>
-                        {time ? 'Time Saved' : 'Cost Saved'}
-                    </div>
-
-                    <div style={{
-                        fontSize: 22,
-                        color: '#e5e7eb',
-                        marginBottom: 24,
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: 8,
-                    }}>
-                        <span>{inputAssetSymbol}</span>
-                        <span style={{ fontSize: 18, color: '#9ca3af' }}>→</span>
-                        <span>{outputAssetSymbol}</span>
-                    </div>
-
-                    <div style={{
-                        fontSize: 72,
-                        fontWeight: 900,
-                        color: '#34d399',
-                        lineHeight: 1,
-                        marginBottom: 16,
-                    }}>
-                        {time ? timeSaved : feesSaved}
-                    </div>
-                </div>
-
-                <div style={{
-                    position: 'absolute',
-                    bottom: 20,
-                    right: 20,
-                    width: 60,
-                    height: 60,
-                    background: '#34d399',
-                    borderRadius: 8,
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                }}>
-                    <img
-                        src="https://garden-og.vercel.app/flowersLogo.png"
-                        alt="flowers logo"
-                        style={{ width: '100%', height: '100%', objectFit: 'contain' }}
-                    />
-                </div>
-
-                <div style={{
-                    position: 'absolute',
-                    bottom: 40,
-                    right: 40,
-                    width: 80,
-                    height: 80,
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                }}>
-                    <img
-                        src="https://garden-og.vercel.app/PinkStrokes.png"
-                        alt="pink strokes"
-                        style={{ width: '100%', height: '100%', objectFit: 'contain' }}
-                    />
-                </div>
+                justifyContent: 'space-between',
+                gap: 8,
+                height: 28,
+                width: '100%',
+                zIndex: 2,
+              }}
+            >
+              <Typography size="h4" weight="medium">
+                {time ? 'Time Saved' : 'Cost Saved'}
+              </Typography>
+              <Typography
+                size="h4"
+                weight="medium"
+                className="flex items-center gap-1"
+              >
+                <Typography size="h4" weight="medium">
+                  {inputAssetSymbol}
+                </Typography>
+                <ArrowRightIcon className="h-[14px] w-[14px] px-[1px]" />
+                <Typography size="h4" weight="medium">
+                  {outputAssetSymbol}
+                </Typography>
+              </Typography>
             </div>
+
+            <hr style={{ width: '100%', borderColor: '#374151' }} />
+
+            {/* Value */}
+            <Typography
+              className="z-20 text-[56px] font-black leading-[54.25px]"
+            >
+              {time ? timeSaved : feesSaved}
+            </Typography>
+          </div>
+
+          {/* Bottom flowers logo */}
+          <div style={{ display: 'flex', width: '100%', justifyContent: 'flex-end' }}>
+            <img
+              src={flowersLogoSrc}
+              alt="flowers logo"
+              style={{ width: 'auto', height: 28, opacity: 0.9 }}
+            />
+          </div>
         </div>
-    );
+      </div>
+    </div>
+  );
 };
