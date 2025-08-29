@@ -1,6 +1,6 @@
 import { ImageResponse } from 'next/og'
 import { fetchOrder } from '@/utils/api'
-import { compactHash } from '@/utils/formatting'
+import { compactHash, formatAmountRaw } from '@/utils/formatting'
 import { OGSavingsShareCard } from '@/components/OGSavingsShareCard'
 
 export const size = { width: 1200, height: 630 }
@@ -37,7 +37,11 @@ export default async function OpengraphImage({ searchParams }: { searchParams: {
 
         const srcAsset = compactHash(result.create_order.source_asset) || 'Unknown'
         const dstAsset = compactHash(result.create_order.destination_asset) || 'Unknown'
-        const timeSaved = '01m 23s'
+        const srcAmt = formatAmountRaw(result.create_order.source_amount) || '0'
+        const dstAmt = formatAmountRaw(result.create_order.destination_amount) || '0'
+
+        // Calculate time saved (you can implement your own logic here)
+        const timeSaved = `${srcAmt}m ${dstAmt}s`
 
         return new ImageResponse(
             <OGSavingsShareCard
