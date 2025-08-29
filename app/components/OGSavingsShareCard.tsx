@@ -6,9 +6,6 @@ type Props = {
     outputAssetSymbol: string;
     feesSaved?: string;
     timeSaved?: string;
-    flowersSrc?: string;
-    pinkStrokesSrc?: string;
-    flowersLogoSrc?: string;
 };
 
 export const OGSavingsShareCard: React.FC<Props> = ({
@@ -17,9 +14,6 @@ export const OGSavingsShareCard: React.FC<Props> = ({
     outputAssetSymbol = 'USDC',
     feesSaved = '$20.01',
     timeSaved = '01m 23s',
-    flowersSrc = '/flowers.png',
-    pinkStrokesSrc = '/PinkStrokes.png',
-    flowersLogoSrc = '/flowersLogo.png',
 }) => {
     return (
         <div
@@ -55,7 +49,7 @@ export const OGSavingsShareCard: React.FC<Props> = ({
                     }}
                 >
                     <div style={{ display: 'flex', width: '100%', justifyContent: 'flex-start' }}>
-                        <img src={flowersSrc} alt="flowers" style={{ width: 'auto', height: 32 }} />
+                        <img src="https://garden-og.vercel.app/flowers.png" alt="flowers" style={{ width: 'auto', height: 32 }} />
                     </div>
 
                     <div
@@ -70,7 +64,7 @@ export const OGSavingsShareCard: React.FC<Props> = ({
                         }}
                     >
                         <img
-                            src={pinkStrokesSrc}
+                            src="https://garden-og.vercel.app/PinkStrokes.png"
                             alt="pink strokes"
                             style={{
                                 position: 'absolute',
@@ -129,7 +123,7 @@ export const OGSavingsShareCard: React.FC<Props> = ({
 
                     <div style={{ display: 'flex', width: '100%', justifyContent: 'flex-end' }}>
                         <img
-                            src={flowersLogoSrc}
+                            src="https://garden-og.vercel.app/flowersLogo.png"
                             alt="flowers logo"
                             style={{ width: 'auto', height: 28, opacity: 0.9 }}
                         />
