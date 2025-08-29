@@ -1,6 +1,6 @@
 import { SavingsShareCard } from '@/components/SavingsShareCard'
 import { fetchOrder } from '@/utils/api'
-import { compactHash, formatAmountRaw } from '@/utils/formatting'
+import { compactHash } from '@/utils/formatting'
 
 export const dynamic = 'force-dynamic'
 
@@ -28,10 +28,7 @@ export default async function CostPage({
 
         const srcAsset = compactHash(create_order.source_asset) || 'Unknown'
         const dstAsset = compactHash(create_order.destination_asset) || 'Unknown'
-        const srcAmt = formatAmountRaw(create_order.source_amount) || '0'
-
-        // Calculate fees saved (you can implement your own logic here)
-        const feesSaved = `$${srcAmt} saved`
+        const feesSaved = '$20.01'
 
         return (
             <div className="min-h-screen bg-primary flex items-center justify-center p-4">

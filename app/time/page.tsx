@@ -1,6 +1,6 @@
 import { SavingsShareCard } from '@/components/SavingsShareCard'
 import { fetchOrder } from '@/utils/api'
-import { compactHash, formatAmountRaw } from '@/utils/formatting'
+import { compactHash } from '@/utils/formatting'
 
 export const dynamic = 'force-dynamic'
 
@@ -28,11 +28,8 @@ export default async function TimePage({
 
         const srcAsset = compactHash(create_order.source_asset) || 'Unknown'
         const dstAsset = compactHash(create_order.destination_asset) || 'Unknown'
-        const srcAmt = formatAmountRaw(create_order.source_amount) || '0'
-        const dstAmt = formatAmountRaw(create_order.destination_amount) || '0'
 
-        // Calculate time saved (you can implement your own logic here)
-        const timeSaved = `${srcAmt}m ${dstAmt}s`
+        const timeSaved = '01m 23s'
 
         return (
             <div className="min-h-screen bg-primary flex items-center justify-center p-4">

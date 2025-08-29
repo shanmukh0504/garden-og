@@ -20,9 +20,11 @@ export const OGSavingsShareCard: React.FC<Props> = ({
             style={{
                 display: 'flex',
                 flexDirection: 'column',
-                gap: 16,
+                width: '100%',
+                height: '100%',
                 alignItems: 'center',
                 justifyContent: 'center',
+                background: '#0a0a0a',
             }}
         >
             <div
@@ -32,9 +34,9 @@ export const OGSavingsShareCard: React.FC<Props> = ({
                     flexDirection: 'column',
                     justifyContent: 'space-between',
                     borderRadius: 16,
-                    padding: 16,
-                    minWidth: 424,
-                    width: '100%',
+                    padding: 32,
+                    width: '80%',
+                    maxWidth: 800,
                     background: '#ffffff',
                 }}
             >
