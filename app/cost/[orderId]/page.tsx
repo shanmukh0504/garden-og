@@ -4,40 +4,25 @@ import { compactHash } from '@/utils/formatting'
 
 export const dynamic = 'force-dynamic'
 
-export default async function TimePage({
-    searchParams,
-}: {
-    searchParams: Promise<{ orderId?: string }>
-}) {
-    const { orderId } = await searchParams
-
-    if (!orderId) {
-        return (
-            <div className="min-h-screen bg-primary flex items-center justify-center p-4">
-                <div className="text-center">
-                    <h1 className="text-2xl font-bold mb-4 text-white">Time Savings</h1>
-                    <p className="text-gray-300">Please provide an orderId to see time savings</p>
-                </div>
-            </div>
-        )
-    }
+export default async function CostOrderPage({ params }: { params: Promise<{ orderId: string }> }) {
+    const { orderId } = await params
 
     try {
         const result = await fetchOrder(orderId)
         const { create_order } = result
 
-        const srcAsset = compactHash(create_order.source_asset) || 'Unknown'
-        const dstAsset = compactHash(create_order.destination_asset) || 'Unknown'
+        const srcAsset = compactHash(create_order.source_asset) || 'BTC'
+        const dstAsset = compactHash(create_order.destination_asset) || 'USDT'
 
-        const timeSaved = '01m 23s'
+        const feesSaved = '$20.01'
 
         return (
             <div className="min-h-screen bg-primary flex items-center justify-center p-4">
                 <SavingsShareCard
-                    time={true}
+                    time={false}
                     inputAssetSymbol={srcAsset}
                     outputAssetSymbol={dstAsset}
-                    timeSaved={timeSaved}
+                    feesSaved={feesSaved}
                     flowersSrc="/flowers.png"
                     pinkStrokesSrc="/PinkStrokes.png"
                     flowersLogoSrc="/flowersLogo.png"

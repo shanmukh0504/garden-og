@@ -26,7 +26,7 @@ export default function Home() {
               className="flex-1 px-5 py-3 rounded-md bg-emerald-600 hover:bg-emerald-500 active:scale-[0.99] disabled:opacity-50 disabled:cursor-not-allowed"
               disabled={!orderId.trim()}
               onClick={() => {
-                if (orderId.trim()) router.push(`/time?orderId=${orderId.trim()}`)
+                if (orderId.trim()) router.push(`/time/${orderId.trim()}`)
               }}
             >
               Time
@@ -35,7 +35,7 @@ export default function Home() {
               className="flex-1 px-5 py-3 rounded-md bg-emerald-600 hover:bg-emerald-500 active:scale-[0.99] disabled:opacity-50 disabled:cursor-not-allowed"
               disabled={!orderId.trim()}
               onClick={() => {
-                if (orderId.trim()) router.push(`/cost?orderId=${orderId.trim()}`)
+                if (orderId.trim()) router.push(`/cost/${orderId.trim()}`)
               }}
             >
               Cost
@@ -44,7 +44,7 @@ export default function Home() {
         </div>
 
         <div className="text-sm text-neutral-500">
-          Tip: Share <code>{DOMAIN}/time?orderId=&lt;orderId&gt;</code> or <code>{DOMAIN}/cost?orderId=&lt;orderId&gt;</code> on X.com — the preview images are generated from live data.
+          Tip: Share <code>{DOMAIN}/time/&lt;orderId&gt;</code> or <code>{DOMAIN}/cost/&lt;orderId&gt;</code> on X.com — the preview images are generated from live data.
         </div>
       </div>
     </main>
