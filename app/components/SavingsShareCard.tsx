@@ -65,7 +65,7 @@ export const SavingsShareCard: React.FC<Props> = ({
             </div>
 
             <hr className="w-full border-dark-grey" />
-            <Typography className="z-20 text-[56px] font-black leading-[54.25px]">
+            <Typography className="z-20 text-[56px] text-center leading-[54.25px]" weight="bold">
               {time ? timeSaved : feesSaved}
             </Typography>
           </div>
