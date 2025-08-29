@@ -5,9 +5,31 @@ import { OGSavingsShareCard } from '@/components/OGSavingsShareCard'
 
 export const size = { width: 1200, height: 630 }
 
-export default async function OpengraphImage({ searchParams }: { searchParams: { orderId?: string } }) {
+export default async function OpengraphImage({ searchParams }: { searchParams: Promise<{ orderId?: string }> }) {
     try {
-        const { orderId } = searchParams
+        // Handle build-time scenarios where searchParams might be undefined
+        if (!searchParams) {
+            return new ImageResponse(
+                <div style={{
+                    width: '100%',
+                    height: '100%',
+                    background: '#0a0a0a',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    color: '#ffffff',
+                    fontSize: 32,
+                    fontFamily: 'Inter, ui-sans-serif, system-ui',
+                }}>
+                    Cost Savings
+                    <br />
+                    Enter orderId to see savings
+                </div>,
+                { ...size }
+            )
+        }
+
+        const { orderId } = await searchParams
 
         if (!orderId) {
             return new ImageResponse(
