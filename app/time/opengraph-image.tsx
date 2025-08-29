@@ -5,9 +5,9 @@ import { OGSavingsShareCard } from '@/components/OGSavingsShareCard'
 
 export const size = { width: 1200, height: 630 }
 
-export default async function OpengraphImage({ searchParams }: { searchParams: Promise<{ orderId?: string }> }) {
+export default async function OpengraphImage({ searchParams }: { searchParams: { orderId?: string } }) {
     try {
-        const { orderId } = await searchParams
+        const { orderId } = searchParams
 
         if (!orderId) {
             return new ImageResponse(

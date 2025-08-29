@@ -7,9 +7,9 @@ export const dynamic = 'force-dynamic'
 export default async function TimePage({
     searchParams,
 }: {
-    searchParams: Promise<{ orderId?: string }>
+    searchParams: { orderId?: string }
 }) {
-    const { orderId } = await searchParams
+    const { orderId } = searchParams
 
     if (!orderId) {
         return (
