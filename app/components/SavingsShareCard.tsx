@@ -1,4 +1,3 @@
-// components/SavingsShareCard.tsx
 'use client'
 import React from 'react';
 import { ArrowRightIcon, Typography } from '@gardenfi/garden-book';
@@ -9,9 +8,9 @@ type Props = {
   outputAssetSymbol: string;
   feesSaved?: string;
   timeSaved?: string;
-  flowersSrc?: string;       // NEW: supply public path
-  pinkStrokesSrc?: string;   // NEW
-  flowersLogoSrc?: string;   // NEW
+  flowersSrc?: string;
+  pinkStrokesSrc?: string;
+  flowersLogoSrc?: string;
 };
 
 export const SavingsShareCard: React.FC<Props> = ({

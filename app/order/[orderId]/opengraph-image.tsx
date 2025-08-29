@@ -51,7 +51,6 @@ export default async function OpengraphImage({ params }: { params: Promise<{ ord
     } catch (error: unknown) {
         console.error('OpenGraph image generation failed:', error)
 
-        // Return a simple error image without fallback
         return new ImageResponse(
             (
                 <div className="w-full h-full bg-[#0a0a0a] flex items-center justify-center text-[#e5e7eb] text-2xl font-sans">

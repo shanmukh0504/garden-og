@@ -1,14 +1,14 @@
 import { ImageResponse } from 'next/og'
 import { fetchOrder } from '@/utils/api'
-import { compactHash, formatAmountRaw } from '@/utils/formatting'
+import { compactHash } from '@/utils/formatting'
 
 export const size = { width: 1200, height: 630 }
 
 export default async function OpengraphImage({ searchParams }: { searchParams: { orderId?: string } }) {
     try {
+        if (!searchParams || typeof searchParams !== 'object')  searchParams = {}
         const { orderId } = searchParams
 
-        // Handle build-time scenario where no orderId is provided
         if (!orderId) {
             return new ImageResponse(
                 (
@@ -44,12 +44,11 @@ export default async function OpengraphImage({ searchParams }: { searchParams: {
 
         const srcAsset = compactHash(result.create_order.source_asset) || 'Unknown'
         const dstAsset = compactHash(result.create_order.destination_asset) || 'Unknown'
-        const feesSaved = '$20.01' // You can calculate this from order data if available
+        const feesSaved = '$20.01'
 
         return new ImageResponse(
             (
                 <div className="w-full h-full bg-[#0a0a0a] flex flex-col items-center justify-center p-12 font-sans">
-                    {/* SavingsShareCard styled for OpenGraph */}
                     <div className="bg-[#111315] border border-[#1e2329] rounded-2xl p-12 flex flex-col items-center justify-center min-w-[600px] max-w-[800px] text-center">
                         <div className="mb-8">
                             <div className="text-2xl text-[#9ca3af] mb-4">
@@ -77,7 +76,6 @@ export default async function OpengraphImage({ searchParams }: { searchParams: {
     } catch (error: unknown) {
         console.error('OpenGraph image generation failed:', error)
 
-        // Return a simple error image without fallback
         return new ImageResponse(
             (
                 <div className="w-full h-full bg-[#0a0a0a] flex items-center justify-center text-[#e5e7eb] text-2xl font-sans">
