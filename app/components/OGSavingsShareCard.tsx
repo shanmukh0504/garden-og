@@ -34,9 +34,9 @@ export const OGSavingsShareCard: React.FC<Props> = ({
                     flexDirection: 'column',
                     justifyContent: 'space-between',
                     borderRadius: 16,
-                    padding: 32,
-                    width: '80%',
-                    maxWidth: 800,
+                    padding: 48,
+                    width: '100%',
+                    height: '100%',
                     background: '#ffffff',
                 }}
             >
